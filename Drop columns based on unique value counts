@@ -12,5 +12,4 @@ cols_to_drop = unique_counts[unique_counts <= 1].index.union(sc_df.columns[sc_df
 print("Unique counts for each column:")
 print(unique_counts)
 
-# drop columns with only one unique value
 cleaned_diab_df = sc_df.drop(columns=cols_to_drop)
