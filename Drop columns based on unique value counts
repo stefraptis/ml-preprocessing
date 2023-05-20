@@ -1,0 +1,16 @@
+for column in sc_df.columns:
+    if sc_df[column].dtype == 'object':
+        unique_categories = sc_df[column].unique()
+        if len(unique_categories) != len(sc_df):
+            print(f"Column '{column}' categories: {unique_categories}")
+
+unique_counts = sc_df.nunique()
+
+cols_to_drop = unique_counts[unique_counts <= 1].index.union(sc_df.columns[sc_df.nunique() == len(sc_df)])
+
+# print the unique counts for each column
+print("Unique counts for each column:")
+print(unique_counts)
+
+# drop columns with only one unique value
+cleaned_diab_df = sc_df.drop(columns=cols_to_drop)

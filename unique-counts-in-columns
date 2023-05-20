@@ -1,7 +1,0 @@
-for column in sc_df.columns:
-    if sc_df[column].dtype == 'object':
-        unique_categories = sc_df[column].unique()
-        if len(unique_categories) != len(sc_df):
-            print(f"Column '{column}' categories: {unique_categories}")
-
-unique_counts = sc_df.nunique()
