@@ -1,0 +1,19 @@
+def check_missing_values(df):
+    # Check for missing values in each column
+    missing_columns = df.columns[df.isnull().any()].tolist()
+
+    # Check for blank values in each column
+    blank_columns = df.columns[(df == '').any()].tolist()
+
+    # Combine the columns with missing values and blank values
+    columns_with_missing_values = set(missing_columns + blank_columns)
+
+    if len(columns_with_missing_values) > 0:
+        print("The following columns have missing values:")
+
+        # Iterate over the columns with missing values
+        for column in columns_with_missing_values:
+            missing_values_count = df[column].isnull().sum() + (df[column] == '').sum()
+            print(f"{column}: {missing_values_count} missing value(s)")
+    else:
+        print("No missing values found in the DataFrame.")
