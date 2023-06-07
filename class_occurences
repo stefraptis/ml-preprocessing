@@ -1,0 +1,4 @@
+def class_occurences(df):
+  for column in df.columns:
+      if df[column].dtype == 'object':
+          print(thoracic_df[column].value_counts())
