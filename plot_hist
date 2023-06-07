@@ -1,0 +1,9 @@
+def plot_hist(df):
+  for column in df.columns:
+      plt.hist(df[column], bins=10, edgecolor='black')
+      
+      plt.xlabel(column)
+      plt.ylabel('Frequency')
+      plt.title('Histogram of {}'.format(column))
+      
+      plt.show()
