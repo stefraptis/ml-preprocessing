@@ -1,0 +1,17 @@
+def upsample(df,column,majority,minority,new_samples,r_state):
+  df_majority = df[df[column]==majority]
+  df_minority = df[df[column]==minority]
+
+  # Downsample majority class
+  df_minority_upsampled = resample(df_minority, 
+                                  replace=True,    # sample without replacement
+                                  n_samples=new_samples,     # to match minority class
+                                  random_state=r_state) # reproducible results
+
+  # Combine minority class with downsampled majority class
+  df_upsampled = pd.concat([df_majority, df_minority_upsampled])
+
+  # Display new class counts
+  print(df_upsampled[column].value_counts())
+
+  return df_upsampled
